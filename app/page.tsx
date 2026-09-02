@@ -1,9 +1,5 @@
-import { CurrentLocation } from '@/components/current-location'
+import { VisionXApp } from '@/components/visionx/visionx-app'
 
 export default function Page() {
-  return (
-    <main className="flex min-h-screen items-center justify-center bg-background p-4 text-foreground">
-      <CurrentLocation />
-    </main>
-  )
+  return <VisionXApp />
 }
