@@ -1,7 +1,8 @@
 'use client'
 
 import { useCallback, useEffect, useRef, useState } from 'react'
-import maplibregl, { type Map as MLMap } from 'maplibre-gl'
+import * as maplibregl from 'maplibre-gl'
+import type { Map as MLMap } from 'maplibre-gl'
 import { useGeolocation } from '@/hooks/use-geolocation'
 import {
   fetchRoutes,

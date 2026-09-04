@@ -161,3 +161,87 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* ---------- VisionX theme: always-dark mission console ---------- */
+.visionx,
+.visionx :root {
+  color-scheme: dark;
+  --background: oklch(0.13 0.02 250);
+  --foreground: oklch(0.97 0.01 220);
+  --card: oklch(0.16 0.025 250 / 92%);
+  --card-foreground: oklch(0.97 0.01 220);
+  --popover: oklch(0.17 0.025 250);
+  --popover-foreground: oklch(0.97 0.01 220);
+  --primary: oklch(0.78 0.14 215);
+  --primary-foreground: oklch(0.13 0.02 250);
+  --secondary: oklch(0.22 0.03 250);
+  --secondary-foreground: oklch(0.9 0.01 220);
+  --muted: oklch(0.22 0.03 250);
+  --muted-foreground: oklch(0.65 0.03 230);
+  --accent: oklch(0.74 0.19 145);
+  --accent-foreground: oklch(0.13 0.02 250);
+  --destructive: oklch(0.65 0.22 25);
+  --border: oklch(0.78 0.14 215 / 25%);
+  --input: oklch(0.78 0.14 215 / 18%);
+  --ring: oklch(0.78 0.14 215);
+}
+
+/* MapLibre markers */
+.vx-marker {
+  width: 18px;
+  height: 18px;
+  border-radius: 9999px;
+  border: 2px solid oklch(0.97 0.01 220);
+  box-shadow: 0 0 0 4px oklch(0.13 0.02 250 / 60%), 0 6px 16px oklch(0 0 0 / 60%);
+}
+.vx-marker-origin { background: oklch(0.78 0.14 215); }
+.vx-marker-dest { background: oklch(0.65 0.22 25); }
+
+.vx-marker-gps {
+  width: 22px;
+  height: 22px;
+  border: none;
+  box-shadow: none;
+  position: relative;
+}
+.vx-gps-dot {
+  position: absolute;
+  inset: 4px;
+  border-radius: 9999px;
+  background: oklch(0.74 0.19 145);
+  border: 2px solid oklch(0.97 0.01 220);
+  box-shadow: 0 0 12px oklch(0.74 0.19 145);
+}
+.vx-gps-ring {
+  position: absolute;
+  inset: -6px;
+  border-radius: 9999px;
+  border: 2px solid oklch(0.74 0.19 145 / 70%);
+  animation: vx-ping 1.6s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+.vx-gps-cone {
+  position: absolute;
+  left: 50%;
+  bottom: 50%;
+  width: 0;
+  height: 0;
+  transform-origin: 50% 100%;
+  border-left: 22px solid transparent;
+  border-right: 22px solid transparent;
+  border-bottom: 56px solid oklch(0.74 0.19 145 / 28%);
+  margin-left: -22px;
+  transform: translateY(0) rotate(0deg);
+  opacity: 0;
+  transition: transform 300ms ease, opacity 300ms ease;
+}
+@keyframes vx-ping {
+  0% { transform: scale(0.6); opacity: 1; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+
+.maplibregl-ctrl-attrib {
+  background: oklch(0.13 0.02 250 / 70%) !important;
+  color: oklch(0.65 0.03 230) !important;
+  font-size: 10px !important;
+}
+.maplibregl-ctrl-attrib a { color: oklch(0.78 0.14 215) !important; }

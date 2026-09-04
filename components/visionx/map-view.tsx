@@ -1,7 +1,8 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
-import maplibregl, { type Map as MLMap, type StyleSpecification } from 'maplibre-gl'
+import * as maplibregl from 'maplibre-gl'
+import type { Map as MLMap, MapLayerMouseEvent, MapMouseEvent, StyleSpecification } from 'maplibre-gl'
 import 'maplibre-gl/dist/maplibre-gl.css'
 import type { LngLat, Place, Route } from '@/lib/geo'
 import type { GpsFix } from '@/hooks/use-geolocation'
@@ -229,7 +230,7 @@ export function MapView({
       }
       dashFrame.current = requestAnimationFrame(tick)
 
-      map.on('click', 'route-alt-line', (e) => {
+      map.on('click', 'route-alt-line', (e: MapLayerMouseEvent) => {
         const f = e.features?.[0]
         if (f && typeof f.properties?.index === 'number') {
           onSelectRoute(f.properties.index)
@@ -245,7 +246,7 @@ export function MapView({
     })
 
     map.on('move', emit)
-    map.on('click', (e) => {
+    map.on('click', (e: MapMouseEvent) => {
       if (e.defaultPrevented) return
       onMapClick([e.lngLat.lng, e.lngLat.lat])
     })
